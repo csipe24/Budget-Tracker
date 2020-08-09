@@ -7,6 +7,9 @@ const PORT = 3000;
 
 const app = express();
 
+var MONGODB = process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw";
+mongoose.connect(MONGODB);
+
 app.use(logger("dev"));
 
 app.use(compression());
@@ -15,10 +18,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-
-mongoose.connect("mongodb://localhost/budget" || "mongodb://csipe24:chrissipe1<dbpassword>@ds255258.mlab.com:55258/heroku_lr2j9bgw", {
-    useNewUrlParser: true,
-    useFindAndModify: false });
+mongoose.connect("mongodb://localhost/budget", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
 // routes
 app.use(require("./routes/api.js"));
