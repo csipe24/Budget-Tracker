@@ -8,7 +8,8 @@ const PORT = 3000;
 const app = express();
 
 var MONGODB = process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw";
-mongoose.connect(MONGODB);
+mongoose.connect(MONGODB).then(() => console.log('MongoDB Connected'))
+.catch((err) => console.log(err));;
 
 app.use(logger("dev"));
 
