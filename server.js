@@ -7,22 +7,19 @@ const PORT = 3000;
 
 const app = express();
 
-var MONGODB = process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw";
-mongoose.connect(MONGODB).then(() => console.log('MongoDB Connected'))
-.catch((err) => console.log(err));;
-
 app.use(logger("dev"));
 
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+mongoose.connect( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", {
   useNewUrlParser: true,
   useFindAndModify: false
-});
+}, (err, res) => {
+  if (err) throw err;}
+);
 
 // routes
 app.use(require("./routes/api.js"));
