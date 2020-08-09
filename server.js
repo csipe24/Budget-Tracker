@@ -14,7 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.createConnection( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", {
+// mongoose.set('useUnifiedTopology', true);
+
+mongoose.connect( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
