@@ -17,9 +17,9 @@ app.use(express.static("public"));
 mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", 
-{
-  useUnifiedTopology: true,
+{useUnifiedTopology: true,
   useNewUrlParser: true,
+  useFindAndModify: false 
   })
   .then(() => console.log('DB Connected!'))
   .catch(err => {
