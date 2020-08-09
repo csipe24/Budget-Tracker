@@ -16,12 +16,15 @@ app.use(express.static("public"));
 
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", {
+mongoose.connect( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", 
+{
+  useUnifiedTopology: true,
   useNewUrlParser: true,
-  useFindAndModify: false
-}, (err) => {
-  if (err) throw err;}
-);
+  })
+  .then(() => console.log('DB Connected!'))
+  .catch(err => {
+  console.log(err);
+  });
 
 // routes
 app.use(require("./routes/api.js"));
