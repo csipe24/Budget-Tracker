@@ -16,6 +16,7 @@ app.use(express.static("public"));
 
 mongoose.createConnection( process.env.MONGODB_URI || "mongodb://csipe24:chrissipe1@ds255258.mlab.com:55258/heroku_lr2j9bgw", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
   useFindAndModify: false
 }, (err) => {
   if (err) throw err;}
